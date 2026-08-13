@@ -1,0 +1,17 @@
+# Render deployment configuration
+# https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: route53-clone-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true          # Render auto-generates a strong secret
+      - key: FRONTEND_URL
+        value: https://your-vercel-app.vercel.app   # Update after Vercel deploy
+      - key: HTTPS
+        value: "true"
