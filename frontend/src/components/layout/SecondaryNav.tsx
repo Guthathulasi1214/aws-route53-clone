@@ -7,19 +7,6 @@ import { useAuth } from '@/lib/auth-context';
 import { useToast } from '@/components/ui/Toast';
 import { getErrorMessage } from '@/lib/api';
 
-/**
- * The secondary nav bar that visually matches the AWS Route 53 console:
- *
- *  ┌───────────────────┬──────────────────────────────────────────────────┐
- *  │  Route 53      ×  │  Route 53  ›  Hosted zones  ›  myaws.ga         │
- *  └───────────────────┴──────────────────────────────────────────────────┘
- *
- * Left panel (matches sidebar width): service name + collapse toggle.
- * Right panel: Route 53-prefixed breadcrumb from BreadcrumbContext.
- *
- * The × button collapses the sidebar; ☰ reopens it.
- * No routing, auth, or data logic is touched.
- */
 interface SecondaryNavProps {
   sidebarOpen: boolean;
   onToggleSidebar: () => void;
@@ -41,11 +28,7 @@ export function SecondaryNav({ sidebarOpen, onToggleSidebar }: SecondaryNavProps
 
   return (
     <div className="secondary-nav" role="navigation" aria-label="Service navigation">
-      {/*
-        LEFT PANEL — strict two-state:
-          OPEN:   Route 53   [×]     ← no hamburger
-          CLOSED: [☰]                ← no Route 53, no ×
-      */}
+      {}
       <div
         className="secondary-nav-brand"
         style={{
@@ -54,8 +37,7 @@ export function SecondaryNav({ sidebarOpen, onToggleSidebar }: SecondaryNavProps
         }}
       >
         {sidebarOpen ? (
-          /* OPEN STATE: Route 53 (left) + × (right) */
-          <>
+                    <>
             <Link href="/" className="secondary-nav-service-name">
               Route 53
             </Link>
@@ -69,8 +51,7 @@ export function SecondaryNav({ sidebarOpen, onToggleSidebar }: SecondaryNavProps
             </button>
           </>
         ) : (
-          /* CLOSED STATE: hamburger only */
-          <button
+                    <button
             className="secondary-nav-menu-btn"
             aria-label="Open sidebar"
             title="Open sidebar"
@@ -81,7 +62,7 @@ export function SecondaryNav({ sidebarOpen, onToggleSidebar }: SecondaryNavProps
         )}
       </div>
 
-      {/* RIGHT: "Route 53 › Hosted zones › myaws.ga" */}
+      {}
       <div className="secondary-nav-crumb" aria-label="Breadcrumb">
         <Link href="/" className="secondary-nav-crumb-link">Route 53</Link>
 
@@ -99,7 +80,7 @@ export function SecondaryNav({ sidebarOpen, onToggleSidebar }: SecondaryNavProps
         ))}
       </div>
 
-      {/* RIGHT end: user email + sign out */}
+      {}
       {user && (
         <div className="secondary-nav-user">
           <span className="secondary-nav-user-email" title={user.email}>

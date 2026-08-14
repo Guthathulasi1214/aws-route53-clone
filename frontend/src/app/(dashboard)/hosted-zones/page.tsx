@@ -119,12 +119,12 @@ export default function HostedZonesPage() {
     setSelectedId((prev) => (prev === id ? null : id));
   };
 
-  // Build a zero-padded fake hosted zone ID like AWS.
+  
   const fakeZoneId = (id: number) => `Z${String(id).padStart(13, '0')}`;
 
   return (
     <>
-      {/* Title row + action toolbar */}
+      {}
       <div className="page-title-row">
         <h1 className="page-title">
           Hosted zones
@@ -133,7 +133,7 @@ export default function HostedZonesPage() {
           </span>
         </h1>
 
-        {/* AWS-style toolbar: refresh | View details | Edit | Delete | Create hosted zone */}
+        {}
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <button
             className="btn-icon"
@@ -182,9 +182,9 @@ export default function HostedZonesPage() {
         </div>
       </div>
 
-      {/* Table panel */}
+      {}
       <div className="table-panel">
-        {/* Search + mini pagination row */}
+        {}
         <div className="table-search-row">
           <div className="search-wrapper">
             <SearchIcon />
@@ -215,7 +215,7 @@ export default function HostedZonesPage() {
           </div>
         </div>
 
-        {/* Table */}
+        {}
         <div className="table-overflow">
           {isLoading ? (
             <div style={{ padding: '40px 20px', textAlign: 'center' }}>
@@ -247,7 +247,7 @@ export default function HostedZonesPage() {
               <thead>
                 <tr>
                   <th className="th-check">
-                    {/* AWS uses radio-style single selection, not select-all */}
+                    {}
                   </th>
                   <th>Hosted zone name</th>
                   <th>Type</th>
@@ -310,7 +310,7 @@ export default function HostedZonesPage() {
           )}
         </div>
 
-        {/* Bottom pagination info */}
+        {}
         {!isLoading && total > 0 && (
           <div className="pagination-bar">
             <span>
@@ -349,7 +349,7 @@ export default function HostedZonesPage() {
         )}
       </div>
 
-      {/* Modals */}
+      {}
       {showCreate && (
         <HostedZoneForm
           onSubmit={handleCreate}

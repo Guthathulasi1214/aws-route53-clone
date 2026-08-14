@@ -16,7 +16,7 @@ export function Pagination({ page, pageSize, total, onPageChange }: PaginationPr
   const start = (page - 1) * pageSize + 1;
   const end = Math.min(page * pageSize, total);
 
-  // Build page list with ellipsis.
+  
   const allPages = Array.from({ length: totalPages }, (_, i) => i + 1);
   const visiblePages = allPages.filter(
     (p) => p === 1 || p === totalPages || Math.abs(p - page) <= 1,

@@ -23,7 +23,7 @@ export default function ZoneDetailPage() {
   const [zone, setZone] = useState<HostedZone | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(true);
 
-  // Set breadcrumb: updates once zone name loads (reuses existing zone state — no second fetch).
+  
   useSetBreadcrumbs(
     [
       { label: 'Hosted zones', href: '/hosted-zones' },
@@ -215,7 +215,7 @@ export default function ZoneDetailPage() {
 
   return (
     <>
-      {/* Page title row */}
+      {}
       <div className="page-title-row">
         <h1 className="page-title">{zone?.name}</h1>
         <div style={{ display: 'flex', gap: 6 }}>
@@ -228,7 +228,7 @@ export default function ZoneDetailPage() {
         </div>
       </div>
 
-      {/* Hosted zone details — collapsible */}
+      {}
       <div className="section-panel">
         <div
           className="section-panel-header"
@@ -289,9 +289,9 @@ export default function ZoneDetailPage() {
         )}
       </div>
 
-      {/* Records section */}
+      {}
       <div className="table-panel">
-        {/* Records toolbar */}
+        {}
         <div className="records-toolbar">
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <button
@@ -330,12 +330,12 @@ export default function ZoneDetailPage() {
           </div>
         </div>
 
-        {/* Info text */}
+        {}
         <div style={{ padding: '6px 16px 4px', fontSize: 12, color: 'var(--text-secondary)', borderBottom: '1px solid var(--border)', background: 'var(--bg-white)' }}>
           {zone && `The following table lists the existing records in ${zone.name}.`}
         </div>
 
-        {/* Search + filter + mini pagination */}
+        {}
         <div className="table-search-row" style={{ flexWrap: 'wrap', gap: 8 }}>
           <div className="search-wrapper" style={{ flex: '1 1 200px', minWidth: 160 }}>
             <SearchIcon />
@@ -471,7 +471,7 @@ export default function ZoneDetailPage() {
           )}
         </div>
 
-        {/* Bottom pagination */}
+        {}
         {!isLoadingRecords && total > 0 && (
           <div className="pagination-bar">
             <span>
@@ -494,7 +494,7 @@ export default function ZoneDetailPage() {
         )}
       </div>
 
-      {/* Modals */}
+      {}
       {showCreate && (
         <RecordForm
           zoneId={zoneId}

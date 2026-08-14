@@ -1,9 +1,9 @@
-// API base client with cookie credentials
+
 import axios from 'axios';
 import { ApiError } from '@/types';
 
-// Use relative URL — Next.js rewrites proxy /api/* → http://localhost:8000/api/*
-// This means cookies are set on the same origin (localhost:3000) and always sent
+
+
 const API_BASE_URL = '';
 
 const apiClient = axios.create({
@@ -14,12 +14,12 @@ const apiClient = axios.create({
   },
 });
 
-// Response interceptor to normalize errors
+
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Redirect to login if unauthorized (unless already on login page)
+      
       if (typeof window !== 'undefined' && !window.location.pathname.startsWith('/login')) {
         window.location.href = '/login';
       }

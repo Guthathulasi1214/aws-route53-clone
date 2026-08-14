@@ -93,14 +93,14 @@ export function RecordForm({ record, zoneName, onSubmit, onCancel, isLoading = f
         <form onSubmit={handleSubmit} noValidate>
           <div className="modal-body" style={{ padding: 0 }}>
 
-            {/* Quick create record panel */}
+            {}
             <div className="form-panel" style={{ margin: '16px 20px 0', borderRadius: 'var(--radius)' }}>
               <div className="form-panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>Quick create record</span>
               </div>
               <div className="form-panel-body">
 
-                {/* Record name + type — side by side */}
+                {}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 20px' }}>
                   <div className="form-group">
                     <label className="form-label" htmlFor="record-name">
@@ -157,7 +157,7 @@ export function RecordForm({ record, zoneName, onSubmit, onCancel, isLoading = f
                   </div>
                 </div>
 
-                {/* Value */}
+                {}
                 <div className="form-group">
                   <label className="form-label" htmlFor="record-value">
                     Value
@@ -177,7 +177,7 @@ export function RecordForm({ record, zoneName, onSubmit, onCancel, isLoading = f
                   {errors.value && <div className="form-error">{errors.value}</div>}
                 </div>
 
-                {/* TTL + Routing policy — side by side */}
+                {}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 20px' }}>
                   <div className="form-group">
                     <label className="form-label" htmlFor="record-ttl">

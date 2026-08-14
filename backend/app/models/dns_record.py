@@ -15,12 +15,12 @@ class DnsRecord(Base):
         index=True
     )
     name = Column(String(255), nullable=False)
-    type = Column(String(10), nullable=False)   # A, AAAA, CNAME, TXT, MX, NS, PTR, SRV, CAA
+    type = Column(String(10), nullable=False)   
     ttl = Column(Integer, nullable=False, default=300)
     value = Column(Text, nullable=False)
     routing_policy = Column(String(50), nullable=False, default="simple")
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationship back to HostedZone
+    
     hosted_zone = relationship("HostedZone", back_populates="records")

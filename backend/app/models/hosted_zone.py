@@ -10,12 +10,12 @@ class HostedZone(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(255), nullable=False, index=True)
     description = Column(Text, nullable=True)
-    zone_type = Column(String(10), nullable=False, default="public")  # 'public' | 'private'
+    zone_type = Column(String(10), nullable=False, default="public")  
     private_zone = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationship — cascade delete records when zone is deleted
+    
     records = relationship(
         "DnsRecord",
         back_populates="hosted_zone",

@@ -34,16 +34,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (!user) return null;
 
-  /*
-    Full-width shell:
-    ┌──────────────────────────────────────────────────────────────┐
-    │  SecondaryNav — spans full width                             │
-    │  "Route 53  ×" (sidebar-aligned)  │  Route 53 › crumb …    │
-    ├──────────────────┬───────────────────────────────────────────┤
-    │  Sidebar         │  Main content (scrollable)                │
-    └──────────────────┴───────────────────────────────────────────┘
-  */
-  return (
+    return (
     <BreadcrumbProvider>
       <div className="app-shell-outer">
         <SecondaryNav

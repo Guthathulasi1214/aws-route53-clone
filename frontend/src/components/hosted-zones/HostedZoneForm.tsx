@@ -59,7 +59,7 @@ export function HostedZoneForm({ zone, onSubmit, onCancel, isLoading = false }: 
         <form onSubmit={handleSubmit} noValidate>
           <div className="modal-body" style={{ padding: '0' }}>
 
-            {/* Configuration panel */}
+            {}
             <div className="form-panel" style={{ margin: '16px 20px 0', borderRadius: 'var(--radius)' }}>
               <div className="form-panel-header">Hosted zone configuration</div>
               <div className="form-panel-body">

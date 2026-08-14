@@ -1,6 +1,4 @@
-"""
-Hosted Zone service — CRUD operations with search and pagination.
-"""
+
 from typing import Optional, Tuple, List
 from datetime import datetime
 

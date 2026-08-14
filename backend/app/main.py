@@ -1,6 +1,4 @@
-"""
-FastAPI main application entry point.
-"""
+
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,7 +9,7 @@ from app.models import User, HostedZone, DnsRecord
 from app.routers import auth, hosted_zones, records
 from app.services.auth import hash_password
 
-# Create all tables
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -20,7 +18,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS — allow Next.js frontend (localhost for dev, FRONTEND_URL env var for production)
+
 _frontend_url = os.getenv("FRONTEND_URL", "")
 _allowed_origins = [
     "http://localhost:3000",
@@ -32,12 +30,12 @@ if _frontend_url:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_allowed_origins,
-    allow_credentials=True,  # Required for httpOnly cookies
+    allow_credentials=True,  
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Register routers
+
 app.include_router(auth.router)
 app.include_router(hosted_zones.router)
 app.include_router(records.router)
@@ -49,14 +47,14 @@ def health_check():
 
 
 def seed_database(db: Session) -> None:
-    """Seed demo data on first startup if database is empty."""
-    # Check if demo user already exists
+    
+    
     if db.query(User).first():
         return
 
     print("[SEED] Seeding demo data...")
 
-    # Create demo user
+    
     demo_user = User(
         name="Admin User",
         email="admin@route53.local",
@@ -65,7 +63,7 @@ def seed_database(db: Session) -> None:
     db.add(demo_user)
     db.flush()
 
-    # Create demo hosted zones
+    
     zone1 = HostedZone(
         name="example.com",
         description="Primary public hosted zone for example.com",
@@ -87,7 +85,7 @@ def seed_database(db: Session) -> None:
     db.add_all([zone1, zone2, zone3])
     db.flush()
 
-    # Create demo DNS records for example.com
+    
     records_zone1 = [
         DnsRecord(hosted_zone_id=zone1.id, name="example.com", type="A",     ttl=300,  value="93.184.216.34",               routing_policy="simple"),
         DnsRecord(hosted_zone_id=zone1.id, name="www.example.com", type="CNAME", ttl=300, value="example.com",              routing_policy="simple"),
@@ -95,13 +93,13 @@ def seed_database(db: Session) -> None:
         DnsRecord(hosted_zone_id=zone1.id, name="example.com", type="NS",   ttl=172800, value="ns1.example.com.",           routing_policy="simple"),
         DnsRecord(hosted_zone_id=zone1.id, name="example.com", type="TXT",  ttl=300,  value='"v=spf1 include:_spf.google.com ~all"', routing_policy="simple"),
     ]
-    # Create demo DNS records for internal.corp
+    
     records_zone2 = [
         DnsRecord(hosted_zone_id=zone2.id, name="db.internal.corp",    type="A",     ttl=60,   value="10.0.1.100",          routing_policy="simple"),
         DnsRecord(hosted_zone_id=zone2.id, name="cache.internal.corp", type="A",     ttl=60,   value="10.0.1.200",          routing_policy="simple"),
         DnsRecord(hosted_zone_id=zone2.id, name="internal.corp",       type="TXT",   ttl=300,  value='"internal-domain=true"', routing_policy="simple"),
     ]
-    # Create demo DNS records for api.myapp.io
+    
     records_zone3 = [
         DnsRecord(hosted_zone_id=zone3.id, name="api.myapp.io",  type="A",     ttl=60,   value="54.239.28.85",            routing_policy="simple"),
         DnsRecord(hosted_zone_id=zone3.id, name="api.myapp.io",  type="AAAA",  ttl=60,   value="2606:2800:220:1:248:1893:25c8:1946", routing_policy="simple"),

@@ -1,6 +1,4 @@
-"""
-Dependency to extract and validate the current user from httpOnly cookie.
-"""
+
 from fastapi import Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 

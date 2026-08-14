@@ -37,7 +37,7 @@ export function Sidebar({ isOpen = true }: SidebarProps) {
       aria-hidden={!isOpen}
     >
 
-      {/* Top-level items (always visible, matching screenshot) */}
+      {}
       <div className="sidebar-section">
         <Link href="/" className={`sidebar-link ${isActive('/') ? 'active' : ''}`}>
           Dashboard
@@ -53,7 +53,7 @@ export function Sidebar({ isOpen = true }: SidebarProps) {
         </span>
       </div>
 
-      {/* Traffic flow */}
+      {}
       <div className="sidebar-section">
         <div className="sidebar-category">Traffic flow</div>
         <Link href="/traffic-policies" className={`sidebar-link ${isActive('/traffic-policies') ? 'active' : ''}`}>
@@ -61,7 +61,7 @@ export function Sidebar({ isOpen = true }: SidebarProps) {
         </Link>
       </div>
 
-      {/* Resolver */}
+      {}
       <div className="sidebar-section">
         <div className="sidebar-category">Resolver</div>
         <Link href="/resolver" className={`sidebar-link ${isActive('/resolver') ? 'active' : ''}`}>
@@ -72,7 +72,7 @@ export function Sidebar({ isOpen = true }: SidebarProps) {
         </Link>
       </div>
 
-      {/* Footer */}
+      {}
       <div className="sidebar-footer">
         {user && (
           <div className="sidebar-user-label" title={user.email}>

@@ -9,8 +9,8 @@ from app.services.auth import authenticate_user, create_access_token, decode_tok
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 
 COOKIE_NAME = "access_token"
-COOKIE_MAX_AGE = 60 * 60 * 24  # 24 hours in seconds
-# True in production (HTTPS), False in local dev (HTTP)
+COOKIE_MAX_AGE = 60 * 60 * 24  
+
 COOKIE_SECURE = os.getenv("HTTPS", "false").lower() == "true"
 
 

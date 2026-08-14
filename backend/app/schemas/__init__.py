@@ -1,4 +1,4 @@
-# schemas/__init__.py
+
 from .auth import LoginRequest, TokenResponse, UserResponse
 from .hosted_zone import (
     HostedZoneCreate,

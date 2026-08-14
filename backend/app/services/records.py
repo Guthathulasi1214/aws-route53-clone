@@ -1,6 +1,4 @@
-"""
-DNS Record service — CRUD with search, type filter, and pagination.
-"""
+
 from typing import Optional, Tuple, List
 from datetime import datetime
 

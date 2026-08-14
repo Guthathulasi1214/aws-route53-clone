@@ -1,6 +1,4 @@
-"""
-DNS Records router — CRUD within a hosted zone + standalone update/delete.
-"""
+
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session

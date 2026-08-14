@@ -1,4 +1,4 @@
-// TypeScript types matching the FastAPI Pydantic schemas
+
 
 export interface User {
   id: number;

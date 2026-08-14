@@ -1,4 +1,3 @@
-/* AWS Route 53 Console Clone */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 *, *::before, *::after {
@@ -8,8 +7,7 @@
 }
 
 :root {
-  /* AWS exact palette */
-  --aws-orange:        #ec7211;
+    --aws-orange:        #ec7211;
   --aws-orange-hover:  #d66309;
   --aws-orange-dark:   #b85309;
   --aws-blue:          #0073bb;
@@ -18,15 +16,13 @@
   --aws-navy:          #232f3e;
   --aws-navy-hover:    #2d3c50;
 
-  /* Surface */
-  --bg-page:       #f2f3f3;
+    --bg-page:       #f2f3f3;
   --bg-white:      #ffffff;
   --bg-sidebar:    #ffffff;
   --bg-header:     #232f3e;
   --bg-table-hd:   #fafafa;
 
-  /* Sidebar exact */
-  --sidebar-text:        #16191f;
+    --sidebar-text:        #16191f;
   --sidebar-muted:       #5f6b7a;
   --sidebar-hover:       #f2f3f3;
   --sidebar-active-bg:   rgba(0,115,187,0.08);
@@ -35,33 +31,28 @@
   --sidebar-section-hd:  #5f6b7a;
   --sidebar-border:      #eaeded;
 
-  /* Status */
-  --color-green:        #1d8102;
+    --color-green:        #1d8102;
   --color-green-bg:     #f2f8f0;
   --color-green-border: #c3e6c3;
   --color-red:          #d13212;
   --color-red-bg:       #fdf3f1;
   --color-red-border:   #f5c6c0;
 
-  /* Border */
-  --border:       #eaeded;
+    --border:       #eaeded;
   --border-input: #aab7b8;
   --border-focus: #0073bb;
   --radius:       2px;
   --radius-sm:    1px;
 
-  /* Text */
-  --text-primary:   #16191f;
+    --text-primary:   #16191f;
   --text-secondary: #545b64;
   --text-muted:     #687078;
   --text-link:      #0073bb;
 
-  /* Shadows */
-  --shadow-sm:    0 1px 2px rgba(0,0,0,0.08);
+    --shadow-sm:    0 1px 2px rgba(0,0,0,0.08);
   --shadow-modal: 0 4px 24px rgba(0,0,0,0.15);
 
-  /* Layout */
-  --sidebar-w:    198px;
+    --sidebar-w:    198px;
   --header-h:     40px;
   --content-pad:  20px;
   --transition:   0.1s ease;
@@ -80,15 +71,6 @@ html, body {
 a { color: var(--text-link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ============================================================
-   APP SHELL
-   Two-level structure:
-     app-shell-outer  (column: nav on top, sidebar+main below)
-       └── SecondaryNav   (full-width)
-       └── app-shell-inner  (row: sidebar | main)
-             ├── app-sidebar
-             └── app-content
-   ============================================================ */
 .app-shell-outer {
   display: flex;
   flex-direction: column;
@@ -103,7 +85,6 @@ a:hover { text-decoration: underline; }
   min-height: 0;
 }
 
-/* WHITE sidebar */
 .app-sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -117,7 +98,6 @@ a:hover { text-decoration: underline; }
   transition: width 0.2s ease, min-width 0.2s ease;
 }
 
-/* Collapsed state — triggered by X button */
 .app-sidebar--collapsed {
   width: 0 !important;
   min-width: 0 !important;
@@ -125,13 +105,6 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
 }
 
-/* ============================================================
-   SECONDARY NAV BAR  (replaces old dark header)
-   Matches the AWS Route 53 console two-panel bar:
-   ┌──────────────────┬───────────────────────────────────────┐
-   │  Route 53     ×  │  Route 53  ›  Hosted zones  ›  zone  │
-   └──────────────────┴───────────────────────────────────────┘
-   ============================================================ */
 .secondary-nav {
   height: 36px;
   background: var(--bg-white);
@@ -142,7 +115,6 @@ a:hover { text-decoration: underline; }
   z-index: 40;
 }
 
-/* Left panel — same width as sidebar, contains "Route 53  ×/☰" */
 .secondary-nav-brand {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -167,7 +139,6 @@ a:hover { text-decoration: underline; }
   color: var(--text-primary);
 }
 
-/* Hamburger button — always visible, opens sidebar when collapsed */
 .secondary-nav-menu-btn {
   background: none;
   border: none;
@@ -186,7 +157,6 @@ a:hover { text-decoration: underline; }
   background: rgba(0, 0, 0, 0.05);
 }
 
-/* × close button — only visible when sidebar is open */
 .secondary-nav-close-btn {
   background: none;
   border: none;
@@ -206,7 +176,6 @@ a:hover { text-decoration: underline; }
   background: rgba(0, 0, 0, 0.05);
 }
 
-/* Right panel — breadcrumb */
 .secondary-nav-crumb {
   flex: 1;
   display: flex;
@@ -238,7 +207,6 @@ a:hover { text-decoration: underline; }
   text-overflow: ellipsis;
 }
 
-/* User area — far right end of secondary nav */
 .secondary-nav-user {
   display: flex;
   align-items: center;
@@ -276,14 +244,12 @@ a:hover { text-decoration: underline; }
   background: var(--bg-page);
 }
 
-/* sidebar-brand removed — "Route 53 ×" is now in SecondaryNav left panel */
 
 
 .sidebar-section {
   padding: 4px 0;
 }
 
-/* Category header — e.g. "Traffic flow", "Resolver" */
 .sidebar-category {
   display: flex;
   align-items: center;
@@ -346,7 +312,6 @@ a:hover { text-decoration: underline; }
   color: var(--sidebar-active-text);
 }
 
-/* New badge */
 .sidebar-badge-new {
   font-size: 10px;
   font-weight: 700;
@@ -373,9 +338,6 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
 }
 
-/* ============================================================
-   HEADER (dark top bar)
-   ============================================================ */
 .header-service-name {
   font-size: 13px;
   font-weight: 600;
@@ -438,9 +400,6 @@ a:hover { text-decoration: underline; }
   color: white;
 }
 
-/* ============================================================
-   PAGE STRUCTURE
-   ============================================================ */
 .page-crumb {
   display: flex;
   align-items: center;
@@ -458,7 +417,6 @@ a:hover { text-decoration: underline; }
 .page-crumb-sep { color: var(--text-muted); font-size: 10px; }
 .page-crumb-current { color: var(--text-muted); }
 
-/* Title row — h1 + action buttons on same line */
 .page-title-row {
   display: flex;
   align-items: center;
@@ -492,17 +450,12 @@ a:hover { text-decoration: underline; }
   margin-left: 4px;
 }
 
-/* AWS resource description text below title */
 .page-desc {
   font-size: 12.5px;
   color: var(--text-secondary);
   margin-bottom: 12px;
 }
 
-/* ============================================================
-   AWS-STYLE RESOURCE TOOLBAR
-   Refresh | View details | Edit | Delete      Create hosted zone
-   ============================================================ */
 .resource-toolbar {
   display: flex;
   align-items: center;
@@ -516,9 +469,6 @@ a:hover { text-decoration: underline; }
   gap: 6px;
 }
 
-/* ============================================================
-   SEARCH + PAGINATION ROW (AWS style)
-   ============================================================ */
 .search-bar-row {
   display: flex;
   align-items: center;
@@ -560,9 +510,6 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 0 0 2px rgba(0,115,187,0.1);
 }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -668,9 +615,6 @@ a:hover { text-decoration: underline; }
   height: 14px;
 }
 
-/* ============================================================
-   TABLE
-   ============================================================ */
 .table-panel {
   background: var(--bg-white);
   border: 1px solid var(--border);
@@ -734,7 +678,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
 }
 .table-link:hover { text-decoration: underline; }
 
-/* Checkbox styling */
 .row-check {
   width: 14px;
   height: 14px;
@@ -742,9 +685,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   cursor: pointer;
 }
 
-/* ============================================================
-   SORT ICON (column header sortable indicator)
-   ============================================================ */
 .th-sortable {
   cursor: pointer;
 }
@@ -756,9 +696,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   font-size: 10px;
 }
 
-/* ============================================================
-   AWS SECTION PANEL (collapsible zone details)
-   ============================================================ */
 .section-panel {
   background: var(--bg-white);
   border: 1px solid var(--border);
@@ -801,7 +738,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   padding: 16px;
 }
 
-/* Detail grid for zone info */
 .detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -820,9 +756,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   color: var(--text-primary);
 }
 
-/* ============================================================
-   TABS (Records / Tags)
-   ============================================================ */
 .aws-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
@@ -854,9 +787,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   font-weight: 600;
 }
 
-/* ============================================================
-   INLINE RECORDS TOOLBAR (inside zone detail)
-   ============================================================ */
 .records-toolbar {
   display: flex;
   align-items: center;
@@ -873,9 +803,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   align-items: center;
 }
 
-/* ============================================================
-   INLINE SEARCH + PAGINATION ROW (inside table panel)
-   ============================================================ */
 .table-search-row {
   display: flex;
   align-items: center;
@@ -889,9 +816,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   flex: 1;
 }
 
-/* ============================================================
-   MINI PAGINATION (< 1 >) 
-   ============================================================ */
 .mini-pagination {
   display: flex;
   align-items: center;
@@ -933,7 +857,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   cursor: not-allowed;
 }
 
-/* Bottom pagination bar */
 .pagination-bar {
   display: flex;
   align-items: center;
@@ -949,9 +872,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   gap: 2px;
 }
 
-/* ============================================================
-   TYPE FILTER TABS (record type filter)
-   ============================================================ */
 .filter-tabs {
   display: flex;
   flex-wrap: nowrap;
@@ -984,9 +904,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   font-weight: 600;
 }
 
-/* ============================================================
-   BADGES / TAGS
-   ============================================================ */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -997,7 +914,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   white-space: nowrap;
 }
 
-/* Public/Private — plain text in AWS, just colored */
 .badge-public {
   color: var(--color-green);
 }
@@ -1006,16 +922,12 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   color: var(--aws-blue);
 }
 
-/* DNS record type — subtle label */
 .badge-record-type {
   font-family: monospace;
   font-size: 12px;
   color: var(--text-primary);
 }
 
-/* ============================================================
-   EMPTY / LOADING / ERROR STATES
-   ============================================================ */
 .state-box {
   padding: 48px 24px;
   text-align: center;
@@ -1061,9 +973,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   height: 13px;
 }
 
-/* ============================================================
-   STATS CARDS (dashboard)
-   ============================================================ */
 .stats-row {
   display: flex;
   gap: 12px;
@@ -1098,9 +1007,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   font-weight: 500;
 }
 
-/* ============================================================
-   FORMS
-   ============================================================ */
 .form-panel {
   background: var(--bg-white);
   border: 1px solid var(--border);
@@ -1198,7 +1104,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   min-height: 80px;
 }
 
-/* Radio cards side-by-side (zone type) */
 .radio-cards {
   display: flex;
   gap: 12px;
@@ -1248,7 +1153,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   line-height: 1.4;
 }
 
-/* TTL preset buttons */
 .ttl-presets {
   display: flex;
   align-items: center;
@@ -1284,9 +1188,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   border-color: var(--aws-navy);
 }
 
-/* ============================================================
-   MODAL
-   ============================================================ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1357,9 +1258,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
-/* ============================================================
-   TOAST
-   ============================================================ */
 .toast-container {
   position: fixed;
   top: 48px;
@@ -1421,9 +1319,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
 
 .toast-close:hover { color: var(--text-primary); }
 
-/* ============================================================
-   LOGIN
-   ============================================================ */
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -1506,9 +1401,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   border: 1px solid var(--border);
 }
 
-/* ============================================================
-   COMING SOON
-   ============================================================ */
 .coming-soon-panel {
   background: var(--bg-white);
   border: 1px solid var(--border);
@@ -1542,17 +1434,11 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
   background: #f8f9fa;
 }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
 @keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp  { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes slideInRight { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes spin     { to { transform: rotate(360deg); } }
 
-/* ============================================================
-   UTILITIES
-   ============================================================ */
 .w-full     { width: 100%; }
 .truncate   { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .text-muted { color: var(--text-muted); }
@@ -1560,9 +1446,6 @@ tbody tr.row-selected:hover { background: #e8f2fa; }
 .text-mono  { font-family: 'Courier New', monospace; font-size: 12px; }
 .text-danger{ color: var(--color-red); }
 
-/* ============================================================
-   SCROLLBAR
-   ============================================================ */
 ::-webkit-scrollbar       { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #c8ced0; border-radius: 3px; }

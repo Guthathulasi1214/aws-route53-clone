@@ -1,6 +1,4 @@
-"""
-Hosted Zones router — full CRUD with search and pagination.
-"""
+
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
@@ -20,7 +18,7 @@ router = APIRouter(prefix="/api/hosted-zones", tags=["hosted-zones"])
 
 
 def _to_response(zone, db: Session) -> HostedZoneResponse:
-    """Convert a HostedZone ORM object to HostedZoneResponse, injecting record_count."""
+    
     count = svc.get_record_count(db, zone.id)
     return HostedZoneResponse(
         id=zone.id,

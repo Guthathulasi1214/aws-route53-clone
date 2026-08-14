@@ -96,6 +96,13 @@ export default function LoginPage() {
           </button>
         </form>
 
+        <div className="login-demo">
+          <div style={{ fontWeight: 600, marginBottom: 4, color: 'var(--text-primary)' }}>
+            Demo credentials:
+          </div>
+          <div>Email: <span style={{ color: 'var(--text-primary)' }}>admin@route53.local</span></div>
+          <div>Password: <span style={{ color: 'var(--text-primary)' }}>admin123</span></div>
+        </div>
 
       </div>
     </div>
